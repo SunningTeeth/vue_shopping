@@ -5,6 +5,7 @@
   "dependencies": {
     "mint-ui": "^2.2.13",
     "vue": "^2.6.10",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.2"
   },
   "devDependencies": {
@@ -26,7 +27,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "dev": "webpack-dev-server --port 9091 --contentBase src --hot"
+    "dev": "webpack-dev-server --port 9092 --contentBase src --hot"
   },
   "keywords": [],
   "author": "",
