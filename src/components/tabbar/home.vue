@@ -10,10 +10,10 @@
     <!-- 九宫格到六宫格的改造 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9 dd">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/home/newsList">
           <span class="mui-icon mui-icon-home"></span>
           <div class="mui-media-body">新闻咨询</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -86,6 +86,7 @@ export default {
   },
   methods: {
     //获取轮播图数据
+    //因为没有接口，所以这里代码无效，自己模拟了一个
     getLunBoTu: function() {
       this.$http.get("/dd").then(
         function(result) {

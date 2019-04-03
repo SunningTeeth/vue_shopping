@@ -23,7 +23,7 @@ import app from "./app.vue"
 
 //按需求导入Mint-UI 中的组件
 import { Header } from "mint-ui"
-Vue.component(Header.name,Header)
+Vue.component(Header.name, Header)
 
 //导入mint-UI样式
 import "mint-ui/lib/style.css"
@@ -35,16 +35,25 @@ import "./lib/mui/css/mui.css"
 import "./lib/mui/css/icons-extra.css"
 
 //导入mint-UI轮播图组件
-import { Swipe, SwipeItem } from 'mint-ui';
+import { Swipe, SwipeItem ,Button} from 'mint-ui';
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 
+//导入时间插件
+import moment from "moment"
+
+//定义全局的过滤器
+Vue.filter("dataFormat", function (dataStr, patten = "YYYY-MM-DD HH:mm:ss") {
+   return moment(dataStr).format(patten);
+
+})
 
 var vm = new Vue({
-  el:"#app",
-  render:function(createdElements){
+  el: "#app",
+  render: function (createdElements) {
     return createdElements(app)
   },
-  router:routerObj
+  router: routerObj
 })
 

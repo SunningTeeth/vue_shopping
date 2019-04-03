@@ -9,6 +9,10 @@ import shopcar from "./components/tabbar/shopcar.vue"
 
 import search from "./components/tabbar/search.vue"
 
+import newsList from "./components/news/newsList.vue"
+
+import newsInfo from "./components/news/newsInfo.vue"
+
 var routerObj = new vueRouter({
   //匹配路由规则
   routes: [
@@ -16,7 +20,9 @@ var routerObj = new vueRouter({
     { path: "/home", component: home },
     { path: "/member", component: member },
     { path: "/shopcar", component: shopcar },
-    { path: "/search", component: search }
+    { path: "/search", component: search },
+    {path:"/home/newsList",component:newsList},
+    {path:"/home/newsInfo/:id",component:newsInfo},
   ],
   linkActiveClass: "mui-active"//覆盖默认的路由高亮的类
 })

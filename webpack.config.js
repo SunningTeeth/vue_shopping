@@ -35,6 +35,7 @@ module.exports = {
 
             { test: /\.css$/, use: ["style-loader", "css-loader"] },
 
+            { test: /\.scss$/, use: ["style-loader", "css-loader","sass-loader"] },
 
             //配置图片路径的loader
             { test: /\.(jpg|png|gif|bmp|jpeg)$/, use: "url-loader?limit=7918&name=[hash:8]-[name].[ext]" },
