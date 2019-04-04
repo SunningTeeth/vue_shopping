@@ -35,17 +35,34 @@ import "./lib/mui/css/mui.css"
 import "./lib/mui/css/icons-extra.css"
 
 //导入mint-UI轮播图组件
-import { Swipe, SwipeItem ,Button} from 'mint-ui';
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+// import { Swipe, SwipeItem, Button ,lazyload} from 'mint-ui';
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
+// //导入懒加载组件
+// Vue.use(lazyload)
+
+//按需求导入，发现lazyload有问题，换成全部导入
+import mintui from "mint-ui"
+Vue.use(mintui)
+
+//导入图片缩略图插件
+import vuePreview from "vue-preview"
+Vue.use(vuePreview)
 
 //导入时间插件
 import moment from "moment"
 
+//设置请求的根路径
+Vue.http.options.root = "/"
+
+//设置全局 post 时候表单数据格式组织形式
+Vue.http.options.emulateJSON = true
+
+
 //定义全局的过滤器
 Vue.filter("dataFormat", function (dataStr, patten = "YYYY-MM-DD HH:mm:ss") {
-   return moment(dataStr).format(patten);
+  return moment(dataStr).format(patten);
 
 })
 

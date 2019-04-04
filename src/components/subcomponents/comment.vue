@@ -1,8 +1,8 @@
 <template>
   <div class="comment-container">
     <h3>发表评论</h3>
-    <textarea placeholder="请输入评论内容(最长120字)" maxlength="120"></textarea>
-    <mt-button type="primary" size="large">发表评论</mt-button>
+    <textarea placeholder="请输入评论内容(最长120字)" maxlength="120" v-model="msg"></textarea>
+    <mt-button type="primary" size="large" @click="postComment()">发表评论</mt-button>
     <div class="cmt-list">
       <div class="cmt-item" v-for="(item,index) in commentsList" :key="index">
         <div
@@ -22,7 +22,9 @@ export default {
   data() {
     return {
       pageIndex: 1,
+      msg: "", //评论的内容
       commentsList: [
+        //评论列表
         {
           user_name: "匿名用户",
           add_time: "2019-4-3 21:54",
@@ -97,7 +99,6 @@ export default {
   methods: {
     getComments: function() {
       //加载评论的方法
-
       this.$http
         .get("/comment/" + this.id + "?pageIndex=" + this.pageIndex)
         .then(
@@ -121,6 +122,36 @@ export default {
       //加载更多
       this.pageIndex++;
       this.getComments();
+    },
+    postComment: function() {
+      //发表评论方法
+
+      //判断评论的内容是否为空
+      if (this.msg.trim() === "") {
+        Toast("评论内容不能为空！");
+        return false;
+      }
+      /**
+       * post:请求有三个参数
+       * 1.url地址
+       * 2.发送的内容
+       * 3.发送数据的格式 (这里已经配置了全局的,所以这里没写)
+       */
+      this.$http
+        .post("/postComment/" + this.$route.params.id, {
+          content: this.msg.trim()
+        })
+        .then(function(res) {
+          var msgObj = {
+            user_name: "黑铁用户",
+            add_time: Date.now(),
+            content: this.msg.trim()
+          };
+
+          this.commentsList.unshift(msgObj); //将评论消息加入数组
+
+          this.msg = "";
+        });
     }
   },
   props: ["id"] //接受父组件传递的id
