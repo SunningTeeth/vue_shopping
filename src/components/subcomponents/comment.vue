@@ -7,7 +7,7 @@
       <div class="cmt-item" v-for="(item,index) in commentsList" :key="index">
         <div
           class="cmt-title"
-        >第{{ index }}楼&nbsp;用户:{{ item.user_name }}&nbsp;&nbsp;发表时间:{{ item.add_time | dataFormat }}</div>
+        >第{{ index+1 }}楼&nbsp;用户:{{ item.user_name }}&nbsp;&nbsp;发表时间:{{ item.add_time | dataFormat }}</div>
         <div class="cmt-body">{{ item.content === "undefined" ? "此用户很懒,嘛都没写":item.content}}</div>
       </div>
     </div>

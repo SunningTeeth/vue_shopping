@@ -1,5 +1,4 @@
 //入口文件
-console.log("ok")
 
 //导入vue
 import Vue from "vue"
@@ -54,7 +53,7 @@ Vue.use(vuePreview)
 import moment from "moment"
 
 //设置请求的根路径
-Vue.http.options.root = "/"
+// Vue.http.options.root = "/"
 
 //设置全局 post 时候表单数据格式组织形式
 Vue.http.options.emulateJSON = true

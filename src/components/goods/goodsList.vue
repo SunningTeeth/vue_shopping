@@ -21,7 +21,7 @@
       </div>
     </router-link>-->
 
-    <!-- 这里不适用 router-link 进行跳转,换成 vue-router 中的另一种方式-->
+    <!-- 这里不使用 router-link 进行跳转,换成 vue-router 中的另一种方式-->
     <!-- 详情请参照 methods 中goDetails() -->
 
     <!-- 实现页面的跳转,有两种方式 -->
@@ -174,19 +174,19 @@ export default {
       //注意：一定要区分 this.$route 和 this.router 这两个对象
       //1.this.$route 是路由中的参数， params 和 query 都属于他
       //2.this.$router 是一个路由导航对象，用它可以方便的使用js代码，实现路由的跳转
-      Toast("这是编程式导航2！");
+      // Toast("这是编程式导航2！");
       //1.最简单的
       // this.$router.push("/home/goodsInfo/" + id);
       //2.传递对象
-      // this.$router.push({path:"/home/goodsInfo/" + id});
+      this.$router.push({path:"/home/goodsInfo/" + id});
       //3.传递命名路由  ( 在路由上给路由指定 name 属性，即可通过 name 属性访问该路由)
       // this.$router.push({ name: "goodsList", params: {id:id} });
       //4.带查询参数
-      this.$router.push({ path: "/home/goodsInfo", query: { id: id } });
+      // this.$router.push({ path: "/home/goodsInfo", query: { 'id': id } });
 
       //注意：如果提供了 path ,params 会被忽略,
       //这里的params 不生效
-      //this.$router.push({ path:'/home/goodsInfo',params:{id:id} })
+      // this.$router.push({ path:'/home/goodsInfo/',params:{id:id} })
     }
   }
 };

@@ -1,11 +1,8 @@
 <template>
   <div>
     <!-- 轮播图区域 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in lunBoTuList" :key="item.id">
-        <img :src="item.url" alt="图片" :title="item.id">
-      </mt-swipe-item>
-    </mt-swipe>
+    <!-- 注意：调用轮播图组件需要传递一个 lunBoTuList  -->
+    <swipe :lunBoTuList="lunBoTuList" :isFull="true"></swipe>
 
     <!-- 九宫格到六宫格的改造 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9 dd">
@@ -41,35 +38,20 @@
           <div class="mui-media-body">视频专区</div>
         </a>
       </li>
-       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
           <span class="mui-icon mui-icon-chatbubble"></span>
           <div class="mui-media-body">联系我们</div>
         </a>
       </li>
-      <!-- <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
-          <span class="mui-icon mui-icon-gear"></span>
-          <div class="mui-media-body">Setting</div>
-        </a>
-      </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
-          <span class="mui-icon mui-icon-info"></span>
-          <div class="mui-media-body">about</div>
-        </a>
-      </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
-          <span class="mui-icon mui-icon-more"></span>
-          <div class="mui-media-body">more</div>
-        </a>
-      </li> -->
     </ul>
   </div>
 </template>
 
 <script>
+//导入轮播图组件
+import swipe from "../subcomponents/swipe.vue";
+
 export default {
   data: function() {
     return {
@@ -97,26 +79,17 @@ export default {
         }
       );
     }
+  },
+  components: {
+    swipe
   }
 };
 </script>
 
 <style scoped>
-/* 轮播图 */
-.mint-swipe {
-  height: 200px;
-}
-.mint-swipe-item {
-  background: cyan;
-}
-.mint-swipe-item img {
-  height: 100%;
-  width: 100%;
-}
-
 /* 九宫格 */
 
-.mui-grid-view.mui-grid-9{
+.mui-grid-view.mui-grid-9 {
   background-color: #fff;
 }
 </style>

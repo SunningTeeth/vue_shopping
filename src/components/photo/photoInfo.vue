@@ -19,7 +19,7 @@
     <!-- 图片内容区域 -->
     <div class="content">{{ photoDetailsList[0].content }}</div>
 
-    <!-- 防止评论子组件 -->
+    <!-- 放置评论子组件 -->
     <comment-box></comment-box>
   </div>
 </template>

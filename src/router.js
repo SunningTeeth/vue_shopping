@@ -21,6 +21,11 @@ import goodsList from './components/goods/goodsList.vue'
 
 import goodsInfo from "./components/goods/goodsInfo.vue"
 
+import desc from "./components/goods/desc.vue"
+
+import comment from "./components/goods/comment.vue"
+
+
 var routerObj = new vueRouter({
   //匹配路由规则
   routes: [
@@ -35,6 +40,8 @@ var routerObj = new vueRouter({
     { path: "/home/photoinfo/:id", component: photoinfo },
     { path: "/home/goodsList", component: goodsList },
     { path: "/home/goodsInfo/:id", component: goodsInfo, name: 'goodsList' },//name表示当前路由的名字，以后通过name属性值就可以访问这个路由
+    { path: "/home/desc/:id", component: desc, name: 'desc' },//name表示当前路由的名字，以后通过name属性值就可以访问这个路由
+    { path: "/home/comment/:id", component: comment, name: 'comment' },//name表示当前路由的名字，以后通过name属性值就可以访问这个路由
 
   ],
   linkActiveClass: "mui-active"//覆盖默认的路由高亮的类
