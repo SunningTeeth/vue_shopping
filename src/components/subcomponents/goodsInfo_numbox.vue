@@ -24,7 +24,6 @@ export default {
   mounted() {
     // mui在mui.init()中会自动初始化基本控件,但是 动态添加的Numbox组件需要手动初始化
     mui(".mui-numbox").numbox();
-    console.log(this.max);
   },
   methods: {
     countChanged() {
@@ -36,6 +35,7 @@ export default {
   },
   props: ["max"], //max 是父组件传递商品最大库存数
   watch: {
+    //限定购买上线为库存的所有量
     max: function(newVal, oldVal) {
       // setOption(options)	更新选项,可取值: min(Int),step(Int),max(Int)
       mui(".mui-numbox")

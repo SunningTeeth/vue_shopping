@@ -17,7 +17,7 @@
           <p>
             市场价&nbsp;:&nbsp;
             <del>￥{{shoppingInfoList.maket_price}}</del>
-            销售价&nbsp;:&nbsp;
+            销售价&nbsp;:
             <b class="sell_price">￥{{shoppingInfoList.sell_price}}</b>
           </p>
           <p>
@@ -96,7 +96,7 @@ export default {
         res => {
           this.shoppingInfoList = res.body[0];
         },
-        (err) => {
+        err => {
           //error
         }
       );
@@ -112,7 +112,17 @@ export default {
     addCar() {
       //加入购物车方法
       this.ballFlag = !this.ballFlag;
-      document.getElementById("badge").innerHTML = this.count;
+
+      //拼接出一个购物车对象，传到 store 状态
+      var goodsInfo = {
+        id: this.id,
+        count: this.count,
+        price: this.shoppingInfoList.sell_price,
+        selected: true
+      };
+      // console.log(goodsInfo);
+      //加入到购物车
+      this.$store.commit("addToCar", goodsInfo);
     },
     beforeEnter(el) {
       //钩子函数的第一个参数el，就表示要执行动画的元素
@@ -172,6 +182,9 @@ export default {
     overflow: visible;
   }
   .mui-card-content-inner {
+    .sell_price{
+      color: red;
+    }
     button {
       margin: 0px 10px;
     }
